@@ -23,8 +23,8 @@ theme = "pipelab"
     url = "/pipelock/"
     weight = 30
   [[menus.main]]
-    name = "Research"
-    url = "/research/"
+    name = "Blog"
+    url = "/blog/"
     weight = 40
   [[menus.main]]
     name = "Contact"

@@ -471,6 +471,21 @@ code {
   margin-top: 0.5rem;
 }
 
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.post-author::before {
+  content: "by ";
+  color: var(--text-dim);
+}
+
 /* ── Contact ─────────────────────────────────── */
 
 .contact-links {
