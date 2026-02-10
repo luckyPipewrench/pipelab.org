@@ -1,0 +1,47 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-content">
+    <h1>Pipe<span class="accent">Lab</span></h1>
+    <p>Security tools for AI agents.<br>Infrastructure that tests them.</p>
+    <div class="hero-buttons">
+      <a href="/pipelock/" class="btn btn-primary">View Pipelock</a>
+      <a href="/research/" class="btn btn-ghost">Research</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-label">Capabilities</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>AI Agent Security</h3>
+      <p>Open-source tools that stop AI agents from leaking your secrets. Pipelock is the flagship — a scanning proxy for Claude Code, Cursor, and other coding agents.</p>
+    </div>
+    <div class="card">
+      <h3>Infrastructure</h3>
+      <p>On-prem Kubernetes, network hardening, GPU compute, NVR systems, automated backups. Built and managed for people who want control over their stack.</p>
+    </div>
+    <div class="card">
+      <h3>Security Research</h3>
+      <p>Published research on AI agent attack vectors and OWASP contributions. If agents can break it, the goal is to find out how — and ship the fix.</p>
+    </div>
+    <div class="card">
+      <h3>Plumbing</h3>
+      <p>Both kinds of infrastructure. PipeLab started in the trades and still handles pipes alongside packets.</p>
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <h3>Pipelock</h3>
+    <p class="tagline">All-in-one security harness for AI agents</p>
+    <div class="install-cmd">brew install luckyPipewrench/tap/pipelock</div>
+    <div class="install-cmd">go install github.com/luckyPipewrench/pipelock/cmd/pipelock@latest</div>
+    <div class="install-cmd">docker pull ghcr.io/luckypipewrench/pipelock:0.1.4</div>
+    <div class="strip-links">
+      <a href="https://github.com/luckyPipewrench/pipelock">GitHub</a>
+      <a href="https://asciinema.org/a/I1UzzECkeCBx6p42">Demo</a>
+      <a href="https://github.com/luckyPipewrench/pipelock/blob/main/docs/owasp-mapping.md">OWASP Mapping</a>
+    </div>
+  </div>
+</section>
+{{ end }}

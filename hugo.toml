@@ -1,0 +1,35 @@
+baseURL = "https://pipelab.org/"
+languageCode = "en-us"
+title = "PipeLab"
+theme = "pipelab"
+
+[params]
+  description = "Security tools for AI agents. Infrastructure that tests them."
+  email = "luckypipe@pipelab.org"
+  github = "https://github.com/luckyPipewrench"
+  twitter = "https://x.com/luckyPipewrench"
+
+[menus]
+  [[menus.main]]
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menus.main]]
+    name = "Capabilities"
+    url = "/capabilities/"
+    weight = 20
+  [[menus.main]]
+    name = "Pipelock"
+    url = "/pipelock/"
+    weight = 30
+  [[menus.main]]
+    name = "Research"
+    url = "/research/"
+    weight = 40
+  [[menus.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 50
+
+[markup.goldmark.renderer]
+  unsafe = true
