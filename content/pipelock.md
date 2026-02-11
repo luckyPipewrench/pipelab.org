@@ -81,15 +81,13 @@ Pipelock maps to the [OWASP Agentic AI Top 10 (2026)](https://genai.owasp.org/re
     <li>Priority support</li>
   </ul>
   <p class="waitlist-cta-text">Drop your email. We'll let you know when it's ready.</p>
-  <form class="waitlist-form" action="https://buttondown.com/api/emails/member-subscribe" method="post" target="_blank">
+  <form class="waitlist-form" action="https://buttondown.com/api/emails/embed-subscribe/luckypipewrench" method="post" target="_blank">
     <input type="hidden" name="tag" value="pipelock-pro" />
     <input type="hidden" name="embed" value="1" />
-    <input type="hidden" name="metadata__source" value="pipelab-org" />
     <div class="waitlist-input-row">
       <input type="email" name="email" placeholder="you@example.com" required class="waitlist-email" />
       <button type="submit" class="btn btn-primary waitlist-submit">Notify Me</button>
     </div>
-    <input type="hidden" name="newsletter" value="luckypipewrench" />
   </form>
   <p class="waitlist-note">No spam. One email when Pro launches.</p>
 </div>
