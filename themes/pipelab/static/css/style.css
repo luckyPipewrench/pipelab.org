@@ -554,6 +554,121 @@ tr:hover td {
   background: var(--bg-card);
 }
 
+/* ── Waitlist ────────────────────────────────── */
+
+.waitlist-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.waitlist-heading {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.waitlist-intro {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.waitlist-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 1.5rem;
+  max-width: 480px;
+  text-align: left;
+}
+
+.waitlist-features li {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 0.3rem 0;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.waitlist-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.waitlist-cta-text {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.waitlist-form {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.waitlist-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.waitlist-email {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.waitlist-email::placeholder {
+  color: var(--text-dim);
+}
+
+.waitlist-email:focus {
+  border-color: var(--accent);
+}
+
+.waitlist-submit {
+  white-space: nowrap;
+}
+
+.waitlist-note {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .waitlist-input-row {
+    flex-direction: column;
+  }
+
+  .waitlist-submit {
+    width: 100%;
+  }
+}
+
 /* ── Footer ──────────────────────────────────── */
 
 .site-footer {
