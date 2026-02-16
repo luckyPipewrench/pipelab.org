@@ -767,12 +767,13 @@ tr:hover td {
   }
 
   .install-cmd {
-    max-width: 100%;
-    overflow-x: auto;
+    max-width: 100% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.75rem;
-    padding: 0.6rem 1rem;
-    -webkit-overflow-scrolling: touch;
+    font-size: 0.72rem;
+    padding: 0.6rem 0.8rem;
+    box-sizing: border-box;
   }
 
   .feature-strip .strip-links {
