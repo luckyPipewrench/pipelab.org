@@ -761,6 +761,24 @@ tr:hover td {
   .page-header h1 {
     font-size: 1.8rem;
   }
+
+  .feature-strip {
+    padding: 1.5rem;
+  }
+
+  .install-cmd {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .feature-strip .strip-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* ── Animations ──────────────────────────────── */
