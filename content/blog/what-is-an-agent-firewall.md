@@ -1,6 +1,6 @@
 ---
 title: "What is an agent firewall?"
-date: 2026-02-22
+date: 2026-02-21
 author: "luckyPipewrench"
 summary: "AI agents make HTTP requests, call tools, and handle credentials. An agent firewall sits between the agent and everything it touches, scanning traffic in both directions."
 description: "AI agents make HTTP requests, call tools, and handle credentials. An agent firewall sits between the agent and everything it touches, scanning traffic in both directions."
