@@ -100,7 +100,17 @@ To see what your agent traffic looks like before enforcing: `pipelock audit .` s
 
 ## Further reading
 
+**From this site:**
+
 - [What is an agent firewall?](/blog/what-is-an-agent-firewall/) — narrative walkthrough of the architecture and threat model
+- [The first AI agent espionage campaign](/blog/first-ai-agent-espionage-campaign/) — GTG-1002 breakdown and which defenses apply at each phase
+- [Securing Claude Code with Pipelock](/blog/securing-claude-code-with-pipelock/) — practical setup guide for MCP proxy wrapping
+- [283 ClawHub skills are leaking your secrets](/blog/leaky-clawhub-skills/) — why static scanning isn't enough and runtime protection matters
+- [Lateral movement in multi-agent systems](/blog/lateral-movement-multi-agent-llm/) — how compromise spreads between agents through shared files
+- [EU AI Act runtime security](/blog/eu-ai-act-runtime-security/) — Article 15 compliance and what it means for agent deployments
+
+**External references:**
+
 - [Anthropic: Disrupting AI-powered espionage (GTG-1002)](https://www.anthropic.com/news/disrupting-ai-espionage) — real-world case demonstrating agent-assisted exfiltration risk
 - [OWASP Agentic Top 10 mapping](https://github.com/luckyPipewrench/pipelock/blob/main/docs/owasp-mapping.md)
 - [OWASP AI Security Solutions Landscape](https://genai.owasp.org/ai-security-solutions-landscape/) (independent listing)
