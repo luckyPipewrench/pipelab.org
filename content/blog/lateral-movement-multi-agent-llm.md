@@ -61,7 +61,7 @@ On a traditional network, moving laterally means exploiting vulnerabilities or s
 People have responded to individual agent threats:
 
 - Sandbox tools (Docker sandboxes, bubblewrap, Anthropic's sandbox-runtime) lock down filesystem and process access
-- Egress firewalls (Pipelock) block credential exfiltration over the network
+- [Agent firewalls](/agent-firewall/) (Pipelock) block credential exfiltration over the network
 - Prompt injection filters (Lakera, NeMo Guardrails) catch malicious inputs to single agents
 - Identity protocols (Visa's Trusted Agent Protocol) give agents cryptographic identity for commerce
 

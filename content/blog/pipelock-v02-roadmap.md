@@ -6,7 +6,7 @@ summary: "GitHub Actions, MCP input scanning, smart DLP, and what Pipelock Pro w
 description: "The v0.2 roadmap for Pipelock. GitHub Actions integration, MCP input scanning, smart DLP, and the path to Pipelock Pro."
 ---
 
-v0.1.5 just shipped. 750+ tests, 7-layer scanner pipeline, MCP proxy, integrity monitoring, project auditing, all in one binary with six dependencies. I also got listed on the [OWASP Solutions Landscape](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) for agentic AI security, which feels pretty good for a project built by a plumber.
+v0.1.5 just shipped. 750+ tests, 7-layer scanner pipeline, MCP proxy, integrity monitoring, project auditing, all in one binary with six dependencies. (Update: v0.2.6 is now out with 2,500+ tests, a 9-layer pipeline, GitHub Action, and Streamable HTTP MCP transport.) I also got listed on the [OWASP Solutions Landscape](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) for agentic AI security, which feels pretty good for a project built by a plumber.
 
 Here's what's coming next.
 

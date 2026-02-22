@@ -48,7 +48,7 @@ Or worse: the agent stores your API key in its memory file, and a different skil
 
 You need something inspecting what actually leaves your machine while the agent is running. Not before. During.
 
-I built [Pipelock](https://github.com/luckyPipewrench/pipelock) for exactly this. It's early-stage but functional: a security harness that sits between your agent and the internet as a proxy, running a 7-layer scanner pipeline on every outbound request:
+I built [Pipelock](https://github.com/luckyPipewrench/pipelock) for exactly this. It's an [agent firewall](/agent-firewall/) that sits between your agent and the internet as a proxy, scanning every outbound request:
 
 1. **SSRF protection** blocks requests to internal IPs and catches DNS rebinding
 2. **Domain blocklist** blocks known exfiltration targets like pastebin and transfer.sh
@@ -98,4 +98,4 @@ Repo: [github.com/luckyPipewrench/pipelock](https://github.com/luckyPipewrench/p
 
 ---
 
-*Pipelock is open source (Apache 2.0). 660+ tests, 90%+ coverage. One binary, zero dependencies.*
+*Pipelock is open source (Apache 2.0). 2,500+ tests, 96%+ coverage. One binary, seven dependencies.*

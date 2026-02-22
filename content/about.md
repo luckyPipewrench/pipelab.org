@@ -1,6 +1,7 @@
 ---
 title: "About"
 subtitle: "Built by a tradesman who learned to code."
+description: "PipeLab builds open-source security tools for AI agents and manages on-prem infrastructure. Founded by a tradesman who learned to code."
 ---
 
 PipeLab started as a homelab. A server under a desk running a few containers, mostly for fun. It grew into a real lab — on-prem Kubernetes, GPU compute, AI agents managing a business, and an open-source security tool that caught the attention of the OWASP community.

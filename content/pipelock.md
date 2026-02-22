@@ -1,6 +1,7 @@
 ---
 title: "Pipelock"
 subtitle: "Open-source agent firewall."
+description: "Pipelock is an open-source agent firewall that scans HTTP and MCP traffic for credential leaks, prompt injection, and tool poisoning. Single binary, 2,500+ tests, Apache 2.0."
 ---
 
 AI coding agents like Claude Code and Cursor have shell access, API keys, and unrestricted network. If an agent gets compromised through prompt injection or a malicious MCP server, it can exfiltrate everything.

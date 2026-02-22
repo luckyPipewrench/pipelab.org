@@ -8,7 +8,7 @@ description: "AI agents make HTTP requests, call tools, and handle credentials. 
 
 Your agent has your API keys. It makes HTTP requests. It calls tools that read files, query databases, and fetch web pages. Any of those can leak credentials, get prompt-injected, or exfiltrate data.
 
-An agent firewall sits between the agent and everything it touches. It scans traffic in both directions before anything gets through. Not a guardrail inside the model. Not a policy engine that checks tool names. A proxy that inspects requests and responses before they reach either side.
+An [agent firewall](/agent-firewall/) sits between the agent and everything it touches. It scans traffic in both directions before anything gets through. Not a guardrail inside the model. Not a policy engine that checks tool names. A proxy that inspects requests and responses before they reach either side.
 
 ## Why agents need firewalls
 

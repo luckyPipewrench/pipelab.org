@@ -1,6 +1,7 @@
 ---
 title: "Contact"
 subtitle: "Get in touch."
+description: "Contact PipeLab for AI agent security, infrastructure consulting, or plumbing services."
 ---
 
 <div class="contact-links">

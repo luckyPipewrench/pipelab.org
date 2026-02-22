@@ -5,15 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}og-image.jpg">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  {{ $ogImage := .Site.BaseURL | printf "%sog-image.jpg" }}
+  {{ with .Params.og_image }}{{ $ogImage = . }}{{ end }}
+  <meta property="og:image" content="{{ $ogImage }}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@luckyPipewrench">
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}og-image.jpg">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+  {{ if .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PipeLab",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": "{{ .Site.BaseURL }}og-image.jpg",
+    "description": "{{ .Site.Params.description }}",
+    "sameAs": [
+      "{{ .Site.Params.github }}",
+      "{{ .Site.Params.twitter }}"
+    ]
+  }
+  </script>
+  {{ else if eq .Section "blog" }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title }}",
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+    "url": "{{ .Permalink }}",
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+    "author": {
+      "@type": "Organization",
+      "name": "PipeLab",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PipeLab",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.BaseURL }}og-image.jpg"
+      }
+    },
+    "image": "{{ $ogImage }}"
+  }
+  </script>
+  {{ else if eq .Title "Pipelock" }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pipelock",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Linux, macOS",
+    "description": "{{ .Description }}",
+    "url": "{{ .Permalink }}",
+    "downloadUrl": "https://github.com/luckyPipewrench/pipelock",
+    "softwareVersion": "0.2.6",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "PipeLab",
+      "url": "{{ .Site.BaseURL }}"
+    }
+  }
+  </script>
+  {{ end }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">

@@ -1,6 +1,7 @@
 ---
 title: "Capabilities"
 subtitle: "What we're good at."
+description: "AI agent security, on-prem Kubernetes infrastructure, security research, and plumbing. Both kinds of pipes."
 ---
 
 <div class="capability">

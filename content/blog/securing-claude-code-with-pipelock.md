@@ -8,7 +8,7 @@ description: "A practical guide to wrapping Claude Code's MCP servers with Pipel
 
 Every MCP server response flows directly into Claude Code's context window. If any of those servers return a prompt injection payload buried in otherwise-normal content, the agent processes it without question. Your API keys, tokens, and credentials can leave through an outbound HTTP request before you notice anything happened.
 
-Pipelock sits between Claude Code and every MCP server, scanning responses before they reach the agent. No scanner catches everything, but this catches the patterns that matter most.
+Pipelock is an [agent firewall](/agent-firewall/) that sits between Claude Code and every MCP server, scanning responses before they reach the agent. No scanner catches everything, but this catches the patterns that matter most.
 
 ## The threat model
 

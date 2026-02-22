@@ -65,7 +65,7 @@ Most people hear "AI cybersecurity" and think model hardening or prompt injectio
 
 Your AI agent has API keys, tokens, and environment variables. If it can reach the internet directly, those can leave through an outbound URL, a query parameter, or a DNS subdomain query.
 
-**Capability separation** stops this. The agent process holds secrets but can't touch the network. A proxy process has network access but no secrets. The agent's only way out is through the proxy. Every request gets scanned for credential patterns, entropy anomalies, and leaked env vars.
+**[Capability separation](/agent-firewall/)** stops this. The agent process holds secrets but can't touch the network. A proxy process has network access but no secrets. The agent's only way out is through the proxy. Every request gets scanned for credential patterns, entropy anomalies, and leaked env vars.
 
 That's Article 15(5) in practice. The architecture prevents leaks instead of just detecting them.
 

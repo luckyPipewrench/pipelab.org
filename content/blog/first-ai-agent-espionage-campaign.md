@@ -92,7 +92,7 @@ But there are gaps the industry hasn't solved:
 
 If you run AI coding agents with network access:
 
-1. **Isolate the network.** The agent that has your secrets shouldn't have direct internet access. Proxy all outbound traffic and scan it. This is Pipelock's core architecture.
+1. **Isolate the network.** The agent that has your secrets shouldn't have direct internet access. Proxy all outbound traffic and scan it. This is the [agent firewall](/agent-firewall/) architecture.
 2. **Block private IPs.** Your agent doesn't need to talk to 169.254.169.254 or 10.0.0.1. Block them.
 3. **Scan for credential patterns.** Every outbound request should be checked for API keys, tokens, and high-entropy segments.
 4. **Monitor your workspace files.** If config files or skill definitions change unexpectedly, something is wrong.
