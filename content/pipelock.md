@@ -1,39 +1,53 @@
 ---
 title: "Pipelock"
-subtitle: "All-in-one security harness for AI agents."
+subtitle: "Open-source agent firewall."
 ---
 
 AI coding agents like Claude Code and Cursor have shell access, API keys, and unrestricted network. If an agent gets compromised through prompt injection or a malicious MCP server, it can exfiltrate everything.
 
-Pipelock fixes this with **capability separation**. The agent process keeps the secrets but can't reach the internet. All HTTP traffic goes through Pipelock's scanning proxy, which checks every request and response.
+Pipelock is an [agent firewall](/agent-firewall/) — it enforces **capability separation** between the agent and the network. The agent process keeps the secrets but can't reach the internet directly. All traffic goes through Pipelock's scanning proxy.
 
 ```
-Agent (secrets, no network) --> Pipelock Proxy (no secrets, full network) --> Internet
+Agent (secrets, no network) --> Pipelock (no secrets, has network) --> Internet / MCP Servers
 ```
 
-## 7-Layer Scanner Pipeline
+## Two Proxy Modes
 
-1. **SSRF Protection** -- Block private IPs, metadata endpoints, DNS rebinding
-2. **Domain Blocklist** -- Configurable deny/allow lists
-3. **Rate Limiting** -- Per-domain sliding window
-4. **DLP** -- Regex patterns for API keys, tokens, credentials
-5. **Env Leak Detection** -- Raw + base64-encoded environment variables
-6. **Entropy Analysis** -- Flag high-entropy URL segments
-7. **URL Length Limits** -- Configurable max URL length
+**Fetch proxy** — the agent's HTTP client points at Pipelock. Every request and response goes through a 9-layer scanner pipeline. Works with any agent framework that supports `HTTPS_PROXY`.
 
-Response scanning adds prompt injection detection on fetched content.
+**MCP proxy** — wraps any MCP server (stdio or Streamable HTTP). Scans tool arguments for credential leaks, tool responses for prompt injection, and tool descriptions for poisoned instructions. Detects mid-session description changes (rug-pulls).
 
-## MCP Proxy
+## Scanner Pipeline
 
-Wraps any MCP server as a stdio proxy. Scans JSON-RPC 2.0 responses for prompt injection and credential leaks before they reach the agent.
+1. **Scheme enforcement** — HTTP/HTTPS only
+2. **Domain blocklist** — Configurable deny/allow lists per mode
+3. **DLP** — 15+ regex patterns for API keys, tokens, credentials. Handles base64, hex, URL-encoding.
+4. **Env variable leak detection** — Raw + base64-encoded, Shannon entropy filtering
+5. **Path entropy** — Flag high-entropy URL segments (exfiltrated data)
+6. **Subdomain entropy** — Flag DNS exfiltration attempts
+7. **SSRF protection** — Block private IPs, link-local, metadata endpoints. DNS rebinding protection.
+8. **Rate limiting** — Per-domain sliding window
+9. **Data budgets** — Per-domain byte limits prevent slow-drip exfiltration
 
+Response scanning adds prompt injection detection on all fetched content and MCP responses.
+
+## GitHub Action
+
+Run Pipelock as a CI check on every pull request. Scans diffs for exposed credentials, injection patterns, and security misconfigurations.
+
+```yaml
+- name: Pipelock Scan
+  uses: luckyPipewrench/pipelock@v0.2.6
+  with:
+    scan-diff: 'true'
+    fail-on-findings: 'true'
 ```
-pipelock mcp proxy -- npx @modelcontextprotocol/server-filesystem /tmp
-```
+
+[View on GitHub Marketplace →](https://github.com/marketplace/actions/pipelock-agent-security-scan)
 
 ## Install
 
-```
+```bash
 # Homebrew (macOS / Linux)
 brew install luckyPipewrench/tap/pipelock
 
@@ -41,32 +55,33 @@ brew install luckyPipewrench/tap/pipelock
 go install github.com/luckyPipewrench/pipelock/cmd/pipelock@latest
 
 # Docker
-docker pull ghcr.io/luckypipewrench/pipelock:0.1.4
+docker pull ghcr.io/luckypipewrench/pipelock:0.2.6
 ```
 
 ## Quick Start
 
-```
-# Generate a config
-pipelock generate config --preset balanced -o pipelock.yaml
+```bash
+# Scan your project and generate a config
+pipelock audit .
 
 # Start the proxy
 pipelock run --config pipelock.yaml
 
 # Point your agent at the proxy
-HTTP_PROXY=http://localhost:8888 claude
+HTTPS_PROXY=http://127.0.0.1:8888 claude
 ```
 
 ## OWASP Coverage
 
-Pipelock maps to the [OWASP Agentic AI Top 10 (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/), covering agent goal hijack, tool misuse, supply chain vulnerabilities, and more. See the full [OWASP mapping](https://github.com/luckyPipewrench/pipelock/blob/main/docs/owasp-mapping.md).
+Pipelock maps to the [OWASP Agentic AI Top 10 (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/). See the full [OWASP mapping](https://github.com/luckyPipewrench/pipelock/blob/main/docs/owasp-mapping.md) and [independent OWASP AI Security Solutions Landscape listing](https://genai.owasp.org/ai-security-solutions-landscape/).
 
 ## Key Numbers
 
 - Single binary, ~12MB, zero runtime dependencies
-- 6 direct Go dependencies
-- 660+ tests with race detector
-- 90%+ coverage across all packages
+- 7 direct Go dependencies
+- 2,500+ tests with race detector
+- 96%+ coverage
+- 6 preset configs (audit, balanced, strict, claude-code, cursor, generic-agent)
 - Apache 2.0 license
 
 <div class="waitlist-section">
@@ -94,5 +109,5 @@ Pipelock maps to the [OWASP Agentic AI Top 10 (2026)](https://genai.owasp.org/re
 
 <div class="hero-buttons" style="margin-top: 2rem;">
   <a href="https://github.com/luckyPipewrench/pipelock" class="btn btn-primary">GitHub</a>
-  <a href="https://asciinema.org/a/I1UzzECkeCBx6p42" class="btn btn-ghost">Watch Demo</a>
+  <a href="/agent-firewall/" class="btn btn-ghost">What is an Agent Firewall?</a>
 </div>

@@ -19,6 +19,10 @@ theme = "pipelab"
     url = "/capabilities/"
     weight = 20
   [[menus.main]]
+    name = "Agent Firewall"
+    url = "/agent-firewall/"
+    weight = 25
+  [[menus.main]]
     name = "Pipelock"
     url = "/pipelock/"
     weight = 30
